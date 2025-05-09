@@ -21,7 +21,7 @@ import os
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from sklearn.metrics import f1_score, precision_score, recall_score
 
-hf_model = "kmcs-casulit/ts_ticket_v1.0.0.5"
+hf_model = "kmcs-casulit/ts_ticket_v1.0.0.3"
 token=os.environ['HUGGINGFACE_TOKEN']
 
 tokenizer = AutoTokenizer.from_pretrained(
