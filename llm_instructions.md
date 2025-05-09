@@ -37,6 +37,9 @@
     transformers
     pandas
     scikit-learn
+    protobuf
+    sentencepiece
+    accelerate
   pip install -r requirements.txt
   ```
   - If using GPU, make sure to install CUDA-enabled PyTorch:
