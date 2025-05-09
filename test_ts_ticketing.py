@@ -31,7 +31,6 @@ tokenizer = AutoTokenizer.from_pretrained(
 model = AutoModelForCausalLM.from_pretrained(
     hf_model,
     token=token,
-    torch_dtype=torch.float16,
     low_cpu_mem_usage=False
     ).to("cuda")
 
