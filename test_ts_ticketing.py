@@ -30,8 +30,9 @@ tokenizer = AutoTokenizer.from_pretrained(
 
 model = AutoModelForCausalLM.from_pretrained(
     hf_model,
-    device_map="auto",
-    token=token
+    device_map={"": "cuda"},
+    token=token,
+    torch_dtype=torch.float16
     ).to("cuda")
 
 
