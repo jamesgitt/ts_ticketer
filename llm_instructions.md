@@ -51,7 +51,7 @@
 - Authentication Token: Hugging Face API token (must have access permission)
   - Set via environment variable:   
     ```bash
-    export HUGGINGFACE_TOKEN='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'
+    export HUGGINGFACE_TOKEN='auth-token'
     ```
 ---
 
