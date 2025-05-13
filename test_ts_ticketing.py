@@ -142,7 +142,10 @@ def process_row(row):
 test_df = pd.read_csv("ts_ticketing_test_results_v1.0.0.5.csv")
 
 # Apply the process_row function to each row
-test_df = test_df.apply(process_row, axis=1)
+for idx, row in test_df.iterrows():
+    test_df.loc[idx] = process_row(row)
+    if (idx + 1) % 10 == 0:
+        print(f"Processed {idx + 1} test cases out of {len(test_df)}")
 
 print(next(model.parameters()).device)
 
