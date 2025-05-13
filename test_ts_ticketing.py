@@ -21,7 +21,7 @@ import os
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from sklearn.metrics import f1_score, precision_score, recall_score
 
-hf_model = "kmcs-casulit/ts_ticket_v1.0.0.3"
+hf_model = "kmcs-casulit/ts_ticket_v1.0.0.5"
 token=os.environ['HUGGINGFACE_TOKEN']
 
 tokenizer = AutoTokenizer.from_pretrained(
@@ -31,8 +31,9 @@ tokenizer = AutoTokenizer.from_pretrained(
 model = AutoModelForCausalLM.from_pretrained(
     hf_model,
     token=token,
+    device_map="auto",
     low_cpu_mem_usage=False
-    ).to("cuda")
+    )
 
 
 ticket_prompt = """
@@ -142,6 +143,8 @@ test_df = pd.read_csv("ts_ticketing_test_results_v1.0.0.5.csv")
 
 # Apply the process_row function to each row
 test_df = test_df.apply(process_row, axis=1)
+
+print(next(model.parameters()).device)
 
 # Save the updated CSV file
 test_df.to_csv("ts_ticketing_test_results_v1.0.0.5.csv", index=False)
